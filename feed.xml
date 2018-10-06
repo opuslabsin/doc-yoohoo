@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>documentation-mobimall</title>
+        <title>doc-yoohoo</title>
         <description>Yoohoo documentation</description>
         <link>opuslabsin.github.io/</link>
         <atom:link href="opuslabsin.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 03 Oct 2018 18:47:23 +0530</pubDate>
-        <lastBuildDate>Wed, 03 Oct 2018 18:47:23 +0530</lastBuildDate>
+        <pubDate>Sat, 06 Oct 2018 15:38:41 +0530</pubDate>
+        <lastBuildDate>Sat, 06 Oct 2018 15:38:41 +0530</lastBuildDate>
         <generator>Jekyll v3.6.2</generator>
         
     </channel>
