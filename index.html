@@ -186,7 +186,9 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <h1 id="introduction">Introduction</h1>
+  <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Video guide for getting Debug SHA1 fingerprint is available, checkout <a href="https://www.youtube.com/watch?v=Zj97ey18ib4">https://www.youtube.com/watch?v=Zj97ey18ib4</a></div>
+
+<h1 id="introduction">Introduction</h1>
 <p>Yoohoo is real-time complete chatting app with groups and voice messages functionality. The user can send pictures, audio, video, contact detail, map location, voice messages, a user can create groups as well.</p>
 
 <h1 id="setup">Setup</h1>
@@ -226,10 +228,18 @@ $('#toc').on('click', 'a', function() {
       <li><strong>admob_banner_id</strong></li>
       <li><strong>sinch_app_key</strong></li>
       <li><strong>sinch_app_secret</strong></li>
-      <li><strong>sinch_app_environment</strong></li>
+      <li><strong>sinch_app_environment</strong> - set this to <code class="highlighter-rouge">clientapi.sinch.com</code> for production app</li>
     </ul>
 
     <p>You will need to update above values in <code class="highlighter-rouge">app/build.gradle</code></p>
+
+    <p><strong><code class="highlighter-rouge">Refactoring</code></strong></p>
+    <ul>
+      <li>Change the <code class="highlighter-rouge">applicationId</code> in <code class="highlighter-rouge">app/build.gradle</code>, set this to the package name you want to keep for your application e.g com.yoohoo</li>
+      <li>Use the same package name while setting up android app in Firebase in the next step.</li>
+      <li>Logo and placeholders used in app are png images which you will find in <code class="highlighter-rouge">app/src/main/res/drawable</code> folder.</li>
+      <li>To change the images in app simply replace the images at above mentioned location with your images.</li>
+    </ul>
 
     <p><strong><code class="highlighter-rouge">Firebase Setup</code></strong></p>
     <ul>
@@ -282,6 +292,19 @@ $('#toc').on('click', 'a', function() {
       <li>Enable <strong>Phone Authentication</strong></li>
     </ul>
 
+    <p><strong><code class="highlighter-rouge">Theming</code></strong></p>
+    <ul>
+      <li>You can control the color used in app from app/build.gradle itself.</li>
+      <li>
+        <p>We provide scope for customization of following values:</p>
+
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resValue 'color', "colorPrimary", "#2196F3"
+resValue 'color', "colorPrimaryDark", "#1976D2"
+resValue 'color', "colorAccent", "#1A237E"
+</code></pre></div>        </div>
+      </li>
+    </ul>
+
     <p><strong><code class="highlighter-rouge">Useful links</code></strong></p>
     <ul>
       <li>SHA-1 key related
@@ -314,7 +337,7 @@ Please raise an issue ticket at this link <a href="https://opuslabs.freshdesk.co
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2018 Opus Labs. All rights reserved. <br />
- Site last generated: Oct 15, 2018 <br />
+ Site last generated: Oct 17, 2018 <br />
 <p><img src="images/company_logo_dark.png" alt="Company logo"/></p>
                 </div>
             </div>
