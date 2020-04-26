@@ -289,12 +289,21 @@ $('#toc').on('click', 'a', function() {
     <p align="center"><img src="images/8.5-firebase-sign-in-method.png" /></p>
 
     <ul>
-      <li>Enable <strong>Phone Authentication</strong></li>
+      <li>
+        <p>Enable <strong>Phone Authentication</strong></p>
+      </li>
+      <li>
+        <p>Similarly enable <strong>Realtime Database</strong> and <strong>Storage</strong> from side menu.</p>
+      </li>
     </ul>
 
-    <p><strong><code class="highlighter-rouge">Theming</code></strong></p>
+    <p><strong><code class="highlighter-rouge">Configuration</code></strong> and <strong><code class="highlighter-rouge">Theming</code></strong></p>
     <ul>
-      <li>You can control the color used in app from <code class="highlighter-rouge">app/build.gradle</code> itself.</li>
+      <li>Open <code class="highlighter-rouge">app/build.gradle</code>, you need to edit/add values in respective fields in <code class="highlighter-rouge">defaultConfig</code> under <code class="highlighter-rouge">android</code></li>
+      <li>Fill in <code class="highlighter-rouge">applicationId</code> with your package name which you registered on firebase console</li>
+      <li>Fill in <code class="highlighter-rouge">app_name</code> and <code class="highlighter-rouge">support_email</code> with your desired app name and support email</li>
+      <li>For audio and video calling follow https://portal.sinch.com/#/signup to register your app name. Follow on screen instructions to obtain App Key and App Secret. Fill in these values in <code class="highlighter-rouge">sinch_app_key</code> and <code class="highlighter-rouge">sinch_app_secret</code> respectively. Finally setup <code class="highlighter-rouge">sinch_app_environment</code> configuration according to your sinch portal.</li>
+      <li>For notifications follow https://app.onesignal.com/apps/new to add your app and obtain OneSignal app id which will be used in <code class="highlighter-rouge">onesignal_app_id</code> under <code class="highlighter-rouge">manifestPlaceholders</code>.</li>
       <li>
         <p>We provide scope for customization of following values:</p>
 
@@ -336,8 +345,8 @@ Please raise an issue ticket at this link <a href="https://opuslabs.freshdesk.co
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               &copy;2018 Opus Labs. All rights reserved. <br />
- Site last generated: Oct 17, 2018 <br />
+               &copy;2020 Opus Labs. All rights reserved. <br />
+ Site last generated: Apr 26, 2020 <br />
 <p><img src="images/company_logo_dark.png" alt="Company logo"/></p>
                 </div>
             </div>
