@@ -119,10 +119,6 @@
                 
                 
                 
-                <li><a href="https://opuslabs.freshdesk.com/" target="_blank">Support</a></li>
-                
-                
-                
                 <!-- entries with drop-downs appear here -->
                 <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
                 
@@ -202,7 +198,7 @@ $('#toc').on('click', 'a', function() {
     <ul>
       <li><strong>Firebase Account</strong> <a href="https://console.firebase.google.com">https://console.firebase.google.com</a></li>
       <li><strong>Firebase’s Realtime Database is enabled.</strong>  Use following security rule or use <strong>Start in test mode</strong>:
-        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {   
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {   
     "rules": {
       // only authenticated users can read or write to my Firebase
       ".read": "auth !== null",
@@ -224,21 +220,36 @@ $('#toc').on('click', 'a', function() {
       <li><strong>support_email</strong></li>
       <li><strong>sinch_app_key</strong></li>
       <li><strong>sinch_app_secret</strong></li>
-      <li><strong>sinch_app_environment</strong> - set this to <code class="highlighter-rouge">clientapi.sinch.com</code> for production app</li>
+      <li><strong>sinch_app_environment</strong> - set this to <code class="language-plaintext highlighter-rouge">clientapi.sinch.com</code> for production app</li>
       <li><strong>onesignal_app_id</strong> - follow https://app.onesignal.com/apps/new to add your app and obtain OneSignal app id</li>
     </ul>
 
-    <p>You will need to update above values in <code class="highlighter-rouge">app/build.gradle</code></p>
+    <p><strong><code class="language-plaintext highlighter-rouge">ADMOB Enable</code></strong>
+   <strong>in app level build.gradle file</strong>
+   Configure your AdMob banner IDs in <code class="language-plaintext highlighter-rouge">ad_unit_id1</code> and <code class="language-plaintext highlighter-rouge">ad_unit_id2</code>. ad_unit_id1 is used on outer chat list screen and ad_unit_id2 is used inside chat page.
+   Switch <code class="language-plaintext highlighter-rouge">ENABLE_ADMOB</code> to <code class="language-plaintext highlighter-rouge">true</code>
+   Configure your AdMob App ID in meta tag with name “com.google.android.gms.ads.APPLICATION_ID” in AndroidManifest.xml file.
+   Save changes and sync gradle.
+   note: you will need to build the project at least once to be able to use build configurations. i.e. -&gt; BuildConfig.ENABLE_ADMOB</p>
 
-    <p><strong><code class="highlighter-rouge">Refactoring</code></strong></p>
+    <p><strong><code class="language-plaintext highlighter-rouge">ADMOB Disable</code></strong>
+   <strong>in app level build.gradle file</strong>
+   Simply switch <code class="language-plaintext highlighter-rouge">ENABLE_ADMOB</code> boolean field to <code class="language-plaintext highlighter-rouge">false</code>.
+   Remove meta tag with name “com.google.android.gms.ads.APPLICATION_ID” from AndroidManifest.xml file.
+   Save changes and sync gradle.
+   note: you will need to build the project at least once to be able to use build configurations. i.e. -&gt; BuildConfig.ENABLE_ADMOB</p>
+
+    <p>You will need to update above values in <code class="language-plaintext highlighter-rouge">app/build.gradle</code></p>
+
+    <p><strong><code class="language-plaintext highlighter-rouge">Refactoring</code></strong></p>
     <ul>
-      <li>Change the <code class="highlighter-rouge">applicationId</code> in <code class="highlighter-rouge">app/build.gradle</code>, set this to the package name you want to keep for your application e.g com.yoohoo</li>
+      <li>Change the <code class="language-plaintext highlighter-rouge">applicationId</code> in <code class="language-plaintext highlighter-rouge">app/build.gradle</code>, set this to the package name you want to keep for your application e.g com.yoohoo</li>
       <li>Use the same package name while setting up android app in Firebase in the next step.</li>
-      <li>Logo and placeholders used in app are png images which you will find in <code class="highlighter-rouge">app/src/main/res/drawable</code> folder.</li>
+      <li>Logo and placeholders used in app are png images which you will find in <code class="language-plaintext highlighter-rouge">app/src/main/res/drawable</code> folder.</li>
       <li>To change the images in app simply replace the images at above mentioned location with your images.</li>
     </ul>
 
-    <p><strong><code class="highlighter-rouge">Firebase Setup</code></strong></p>
+    <p><strong><code class="language-plaintext highlighter-rouge">Firebase Setup</code></strong></p>
     <ul>
       <li>
         <p>Create a Firebase account or log into an existing account.</p>
@@ -270,7 +281,7 @@ $('#toc').on('click', 'a', function() {
         <p>Click Register app.</p>
       </li>
       <li>
-        <p>Download the google-services.json file and place it in <code class="highlighter-rouge">app</code> folder.</p>
+        <p>Download the google-services.json file and place it in <code class="language-plaintext highlighter-rouge">app</code> folder.</p>
       </li>
     </ul>
     <p align="center"><img src="images/8.4-firebase-download-config-json.png" /></p>
@@ -294,24 +305,24 @@ $('#toc').on('click', 'a', function() {
       </li>
     </ul>
 
-    <p><strong><code class="highlighter-rouge">Configuration</code></strong> and <strong><code class="highlighter-rouge">Theming</code></strong></p>
+    <p><strong><code class="language-plaintext highlighter-rouge">Configuration</code></strong> and <strong><code class="language-plaintext highlighter-rouge">Theming</code></strong></p>
     <ul>
-      <li>Open <code class="highlighter-rouge">app/build.gradle</code>, you need to edit/add values in respective fields in <code class="highlighter-rouge">defaultConfig</code> under <code class="highlighter-rouge">android</code></li>
-      <li>Fill in <code class="highlighter-rouge">applicationId</code> with your package name which you registered on firebase console</li>
-      <li>Fill in <code class="highlighter-rouge">app_name</code> and <code class="highlighter-rouge">support_email</code> with your desired app name and support email</li>
-      <li>For audio and video calling follow https://portal.sinch.com/#/signup to register your app name. Follow on screen instructions to obtain App Key and App Secret. Fill in these values in <code class="highlighter-rouge">sinch_app_key</code> and <code class="highlighter-rouge">sinch_app_secret</code> respectively. Finally setup <code class="highlighter-rouge">sinch_app_environment</code> configuration according to your sinch portal.</li>
-      <li>For notifications follow https://app.onesignal.com/apps/new to add your app and obtain OneSignal app id which will be used in <code class="highlighter-rouge">onesignal_app_id</code> under <code class="highlighter-rouge">manifestPlaceholders</code>.</li>
+      <li>Open <code class="language-plaintext highlighter-rouge">app/build.gradle</code>, you need to edit/add values in respective fields in <code class="language-plaintext highlighter-rouge">defaultConfig</code> under <code class="language-plaintext highlighter-rouge">android</code></li>
+      <li>Fill in <code class="language-plaintext highlighter-rouge">applicationId</code> with your package name which you registered on firebase console</li>
+      <li>Fill in <code class="language-plaintext highlighter-rouge">app_name</code> and <code class="language-plaintext highlighter-rouge">support_email</code> with your desired app name and support email</li>
+      <li>For audio and video calling follow https://portal.sinch.com/#/signup to register your app name. Follow on screen instructions to obtain App Key and App Secret. Fill in these values in <code class="language-plaintext highlighter-rouge">sinch_app_key</code> and <code class="language-plaintext highlighter-rouge">sinch_app_secret</code> respectively. Finally setup <code class="language-plaintext highlighter-rouge">sinch_app_environment</code> configuration according to your sinch portal.</li>
+      <li>For notifications follow https://app.onesignal.com/apps/new to add your app and obtain OneSignal app id which will be used in <code class="language-plaintext highlighter-rouge">onesignal_app_id</code> under <code class="language-plaintext highlighter-rouge">manifestPlaceholders</code>.</li>
       <li>
         <p>We provide scope for customization of following values:</p>
 
-        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resValue 'color', "colorPrimary", "#2196F3"
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resValue 'color', "colorPrimary", "#2196F3"
 resValue 'color', "colorPrimaryDark", "#1976D2"
 resValue 'color', "colorAccent", "#1A237E"
 </code></pre></div>        </div>
       </li>
     </ul>
 
-    <p><strong><code class="highlighter-rouge">Useful links</code></strong></p>
+    <p><strong><code class="language-plaintext highlighter-rouge">Useful links</code></strong></p>
     <ul>
       <li>SHA-1 key related
         <ul>
@@ -323,9 +334,6 @@ resValue 'color', "colorAccent", "#1A237E"
     </ul>
   </li>
 </ol>
-
-<p><strong>Note: If you are unable to understand any topic or find any topic needs more elaboration. 
-Please raise an issue ticket at this link <a href="https://opuslabs.freshdesk.com">https://opuslabs.freshdesk.com</a></strong></p>
 
 
     <div class="tags">
@@ -339,11 +347,15 @@ Please raise an issue ticket at this link <a href="https://opuslabs.freshdesk.co
 
 <hr class="shaded"/>
 
+<div class="row footer" style="width:100%">
+    <a href="https://codecanyon.net/downloads"><img style="display: block; margin:auto; max-width:60%" src="images/rate-us-banner.gif" /></a>
+    <a href="https://codecanyon.net/downloads"><img style="display: block; margin:100px auto 20px auto; max-width:60%" src="images/how-to-rate.jpg" /></a>
+  </div>
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               &copy;2020 Opus Labs. All rights reserved. <br />
- Site last generated: May 7, 2020 <br />
+               &copy;2021 Opus Labs. All rights reserved. <br />
+ Site last generated: Jan 11, 2021 <br />
 <p><img src="images/company_logo_dark.png" alt="Company logo"/></p>
                 </div>
             </div>
