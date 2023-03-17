@@ -198,11 +198,12 @@ $('#toc').on('click', 'a', function() {
     <ul>
       <li><strong>Firebase Account</strong> <a href="https://console.firebase.google.com">https://console.firebase.google.com</a></li>
       <li><strong>Firebase’s Realtime Database is enabled.</strong>  Use following security rule or use <strong>Start in test mode</strong>:
-        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {   
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {
     "rules": {
-      // only authenticated users can read or write to my Firebase
-      ".read": "auth !== null",
-      ".write": "auth !== null"   
+      "fire_app": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
     }
   }
 </code></pre></div>        </div>
@@ -230,14 +231,16 @@ $('#toc').on('click', 'a', function() {
    Switch <code class="language-plaintext highlighter-rouge">ENABLE_ADMOB</code> to <code class="language-plaintext highlighter-rouge">true</code>
    Configure your AdMob App ID in meta tag with name “com.google.android.gms.ads.APPLICATION_ID” in AndroidManifest.xml file.
    Save changes and sync gradle.
-   note: you will need to build the project at least once to be able to use build configurations. i.e. -&gt; BuildConfig.ENABLE_ADMOB</p>
+   note: you will need to build the project at least once to be able to use build configurations. i.e. -&gt; BuildConfig.ENABLE_ADMOB
+   note: search for <code class="language-plaintext highlighter-rouge">uncomment following to support admob</code> for all AdMob references.</p>
 
     <p><strong><code class="language-plaintext highlighter-rouge">ADMOB Disable</code></strong>
    <strong>in app level build.gradle file</strong>
    Simply switch <code class="language-plaintext highlighter-rouge">ENABLE_ADMOB</code> boolean field to <code class="language-plaintext highlighter-rouge">false</code>.
    Remove meta tag with name “com.google.android.gms.ads.APPLICATION_ID” from AndroidManifest.xml file.
    Save changes and sync gradle.
-   note: you will need to build the project at least once to be able to use build configurations. i.e. -&gt; BuildConfig.ENABLE_ADMOB</p>
+   note: you will need to build the project at least once to be able to use build configurations. i.e. -&gt; BuildConfig.ENABLE_ADMOB
+   note: search for <code class="language-plaintext highlighter-rouge">uncomment following to support admob</code> for all AdMob references.</p>
 
     <p>You will need to update above values in <code class="language-plaintext highlighter-rouge">app/build.gradle</code></p>
 
@@ -246,6 +249,7 @@ $('#toc').on('click', 'a', function() {
       <li>Change the <code class="language-plaintext highlighter-rouge">applicationId</code> in <code class="language-plaintext highlighter-rouge">app/build.gradle</code>, set this to the package name you want to keep for your application e.g com.yoohoo</li>
       <li>Use the same package name while setting up android app in Firebase in the next step.</li>
       <li>Logo and placeholders used in app are png images which you will find in <code class="language-plaintext highlighter-rouge">app/src/main/res/drawable</code> folder.</li>
+      <li>Privacy policy raw text is placed in <code class="language-plaintext highlighter-rouge">app/src/main/assets/privacy.txt</code></li>
       <li>To change the images in app simply replace the images at above mentioned location with your images.</li>
     </ul>
 
@@ -301,6 +305,9 @@ $('#toc').on('click', 'a', function() {
         <p>Enable <strong>Phone Authentication</strong></p>
       </li>
       <li>
+        <p>Enable <strong>Google Play Integrity API</strong> for your project id on Google Cloud Console</p>
+      </li>
+      <li>
         <p>Similarly enable <strong>Realtime Database</strong> and <strong>Storage</strong> from side menu.</p>
       </li>
     </ul>
@@ -313,7 +320,7 @@ $('#toc').on('click', 'a', function() {
       <li>For audio and video calling follow https://portal.sinch.com/#/signup to register your app name. Follow on screen instructions to obtain App Key and App Secret. Fill in these values in <code class="language-plaintext highlighter-rouge">sinch_app_key</code> and <code class="language-plaintext highlighter-rouge">sinch_app_secret</code> respectively. Finally setup <code class="language-plaintext highlighter-rouge">sinch_app_environment</code> configuration according to your sinch portal.</li>
       <li>For notifications follow https://app.onesignal.com/apps/new to add your app and obtain OneSignal app id which will be used in <code class="language-plaintext highlighter-rouge">onesignal_app_id</code> under <code class="language-plaintext highlighter-rouge">manifestPlaceholders</code>.</li>
       <li>
-        <p>We provide scope for customization of following values:</p>
+        <p>We provide scope for customization of various variables of the application, for example:</p>
 
         <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>resValue 'color', "colorPrimary", "#2196F3"
 resValue 'color', "colorPrimaryDark", "#1976D2"
@@ -335,6 +342,9 @@ resValue 'color', "colorAccent", "#1A237E"
   </li>
 </ol>
 
+<p><strong>Note: If you are unable to understand any topic or find any topic needs more elaboration.
+Please raise an issue ticket at this link <a href="https://opuslabs.freshdesk.com">https://opuslabs.freshdesk.com</a></strong></p>
+
 
     <div class="tags">
         
@@ -354,8 +364,8 @@ resValue 'color', "colorAccent", "#1A237E"
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               &copy;2021 Opus Labs. All rights reserved. <br />
- Site last generated: Jan 11, 2021 <br />
+               &copy;2023 Opus Labs. All rights reserved. <br />
+ Site last generated: Mar 17, 2023 <br />
 <p><img src="images/company_logo_dark.png" alt="Company logo"/></p>
                 </div>
             </div>
